@@ -1,0 +1,79 @@
+
+.app {
+  height: 100vh;
+}
+
+.sidebar {
+
+  left:0;
+  position:fixed;
+  width: 6em;
+  height: 105%;
+  top: 0;
+  overflow: hidden;
+  background-color:#111;
+  visibility: visible;
+}
+
+.sidebar header {
+  background-color: #111;
+  width: 100%;
+  
+  display: block;
+  padding: 0.75em 1em;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.sidebar-nav ul li a {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75em;
+  padding: 1.05em 1em;
+  position: relative;
+  display: block;
+  transition: all 0.6s ease;
+}
+
+.sidebar-nav ul li a:hover {
+  background-color: #3C246B;
+  transition: all 0.6s ease;
+}
+
+.sidebar-nav ul li i {
+  font-size: 1.8em;
+  padding-right: 0.5em;
+  width: 9em;
+  display: inline;
+  vertical-align: middle;
+}
+
+.sidebar-nav > ul > li > a:after {
+  content: "\f125";
+  font-family: ionicons;
+  font-size: 0.5em;
+  width: 10px;
+  color: #fff;
+  position: absolute;
+  right: 0.75em;
+  top: 45%;
+}
+
+.nav-flyout {
+  position: absolute;
+  background-color: #25144A;
+  z-index: 9;
+  left: 2.5em;
+  top: 0;
+  height: 100vh;
+  transform: translateX(100%);
+  transition: all 0.5s ease;
+}
+
+.nav-flyout a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-nav ul > li:hover .nav-flyout {
+  transform: translateX(0);
+  transition: all 0.5s ease;
+}
