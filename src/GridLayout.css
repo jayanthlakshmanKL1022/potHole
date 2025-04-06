@@ -1,4 +1,4 @@
-.parent {
+/* .parent {
     display: grid;
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(20, 2fr);
@@ -38,4 +38,4 @@
     grid-column-start: 1;
     grid-row-start: 4;
     background-color: lightgoldenrodyellow;
-  }
+  } */

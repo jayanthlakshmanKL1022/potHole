@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { RouteComponentProps, Link, useNavigate } from "@reach/router";
-import "./signin.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -12,7 +11,7 @@ const Sign: React.FC<RouteComponentProps> = () => {
   });
 
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     try {
@@ -46,39 +45,84 @@ const Sign: React.FC<RouteComponentProps> = () => {
   };
 
   return (
-    <div className="signin-container">
-      <div className="animated-background"></div>
-      <form className="signin-form" onSubmit={handleSubmit}>
-        <h3>Login pothole Analytics Dashboard</h3>
+    <div style={{    display: 'flex',
+      justifyContent: 'center'as 'center',
+      alignItems: 'center' as 'center',
+      minHeight: '100vh',
+      backgroundColor: '#f5f5f5',}}>
+      <form style={{  backgroundColor: '#ffffff',
+    padding: '30px',
+    borderRadius: '10px',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    width: '100%',
+    maxWidth: '400px',}} onSubmit={handleSubmit}>
+        <h3 style={{   textAlign: 'center',
+    marginBottom: '20px',
+    fontSize: '1.5rem',
+    color: '#333',}}>Login Pothole Analytics Dashboard</h3>
 
-        <label className="signin-label">Email</label>
+        <label style={{    display: 'block',
+    marginBottom: '8px',
+    fontSize: '1rem',
+    color: '#333',}}>Email</label>
         <input
           type="text"
           placeholder="Email or Phone"
-          className="signin-input"
+          style={{    width: '90%',
+            padding: '10px',
+            marginBottom: '15px',
+            border: '1px solid #ccc',
+            borderRadius: '5px',
+            fontSize: '1rem',
+            outline: 'none',}}
           name="email"
           onChange={handleChange}
           value={formdata.email}
         />
 
-        <label className="signin-label">Password</label>
+        <label style={{   display: 'block',
+    marginBottom: '8px',
+    fontSize: '1rem',
+    color: '#333',}}>Password</label>
         <input
           type="password"
           placeholder="Password"
-          className="signin-input"
+          style={{    width: '90%',
+            padding: '10px',
+            marginBottom: '15px',
+            border: '1px solid #ccc',
+            borderRadius: '5px',
+            fontSize: '1rem',
+            outline: 'none',}}
           name="password"
           onChange={handleChange}
           value={formdata.password}
         />
 
-        <button type="submit" className="signin-button">LOG IN</button>
+        <button type="submit" style={{    width: '96%',
+    padding: '12px',
+    backgroundColor: '#0077B5',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontSize: '1rem',}}>LOG IN</button>
 
-        <p className="signin-text">Don't have an account?</p>
-        <Link to="/login" className="signin-link">Create Account</Link>
+        <p style={{textAlign: 'center',
+    marginTop: '10px',
+    fontSize: '1rem',
+    color: '#555',}}>Don't have an account?</p>
+        <Link to="/login" style={{  display: 'block',
+    textAlign: 'center',
+    marginTop: '10px',
+    color: '#007BFF',
+    textDecoration: 'none',
+    fontSize: '1rem',}}>Create Account</Link>
       </form>
       <ToastContainer closeButton={false} />
     </div>
   );
 };
+
 
 export default Sign;

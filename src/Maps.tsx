@@ -1,0 +1,49 @@
+import React, { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import L from "leaflet";
+import { useEffect } from "react";
+import axios from "axios";
+import { RouteComponentProps } from "@reach/router";
+
+const potholeIcon = new L.Icon({
+  iconUrl: "data:image/png;base64,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",
+  iconSize: [30, 30],
+});
+const PotholeMap: React.FC<RouteComponentProps> = () => {
+  const[potHole,setpotHole]=useState<any>([])
+  useEffect(()=>{
+    const fetch=async()=>
+    {
+      try{
+        const res=await axios.get("http://localhost:5500/pothole/getDetails");
+        setpotHole(res.data)
+        console.log(potHole)
+        }
+      catch(error)
+      {
+        alert(error)
+      }
+    }
+  fetch()
+  },[])
+
+  return (
+    <div>
+    <MapContainer center={[20.5937, 78.9629]} zoom={5} style={{ height: "800px", width: "100%" }}>
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+      {potHole.map((item:any) => (
+        <Marker  position={[item.latitude, item.longitude]} icon={potholeIcon}>
+          <Popup>
+            <b>Location:</b> {item.location} <br />
+            <b>Severity:</b> {item.severity}
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+    </div>
+  );
+};
+
+export default PotholeMap;
